@@ -2,6 +2,7 @@
 	🦉 OWL: Optimized Workforce Learning for General Multi-Agent Assistance in Real-World Task Automation
 </h1>
 
+> **Attribution Notice**: This repository is a fork of the [original OWL project](https://github.com/camel-ai/owl) by [CAMEL AI](https://www.camel-ai.org/). The original project is licensed under [Apache License 2.0](https://github.com/camel-ai/owl/blob/main/LICENSE). This version contains my personal modifications and improvements while maintaining the core functionality of the original project.
 
 <div align="center">
 
