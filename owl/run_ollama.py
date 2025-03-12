@@ -48,13 +48,13 @@ def construct_society(question: str) -> OwlRolePlaying:
     models = {
         "user": ModelFactory.create(
             model_platform=ModelPlatformType.OLLAMA,
-            model_type="qwen2.5:72b",
+            model_type="llama3.2:latest",
             url="http://localhost:11434/v1",
             model_config_dict={"temperature": 0.8, "max_tokens": 1000000},
         ),
         "assistant": ModelFactory.create(
             model_platform=ModelPlatformType.OLLAMA,
-            model_type="qwen2.5:72b",
+            model_type="llama3.2:latest",
             url="http://localhost:11434/v1",
             model_config_dict={"temperature": 0.2, "max_tokens": 1000000},
         ),
@@ -66,7 +66,7 @@ def construct_society(question: str) -> OwlRolePlaying:
         ),
         "planning": ModelFactory.create(
             model_platform=ModelPlatformType.OLLAMA,
-            model_type="qwen2.5:72b",
+            model_type="llama3.2:latest",
             url="http://localhost:11434/v1",
             model_config_dict={"temperature": 0.4, "max_tokens": 1000000},
         ),
@@ -119,7 +119,7 @@ def construct_society(question: str) -> OwlRolePlaying:
 def main():
     r"""Main function to run the OWL system with an example question."""
     # Example research question
-    question = "Navigate to Amazon.com and identify one product that is attractive to coders. Please provide me with the product name and price. No need to verify your answer."
+    question = "Go to amazon.com and search for the cheapest laptop with a rtx 3050 graphics card and ryzen 7. Provide the product name, its price, and a brief description of the design and what the general consensus the reviews are saying about the laptop."
 
     # Construct and run the society
     society = construct_society(question)

@@ -45,42 +45,23 @@ def construct_society(question: str) -> OwlRolePlaying:
     """
 
     # Create models for different components
+    base_model_config = {
+        "model_platform": ModelPlatformType.OPENAI_COMPATIBLE_MODEL,
+        "model_type": "llama-3.3-70b-versatile",  # Using Mixtral model from Groq
+        "api_key": "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",
+        "url": "https://api.groq.com/openai/v1",
+        "model_config_dict": {
+            "temperature": 0.4,
+            "max_tokens": 4096,
+        },
+    }
+
     models = {
-        "user": ModelFactory.create(
-            model_platform=ModelPlatformType.OPENAI_COMPATIBLE_MODEL,
-            model_type="qwen-max",
-            api_key=os.getenv("QWEN_API_KEY"),
-            url="https://dashscope.aliyuncs.com/compatible-mode/v1",
-            model_config_dict={"temperature": 0.4, "max_tokens": 4096},
-        ),
-        "assistant": ModelFactory.create(
-            model_platform=ModelPlatformType.OPENAI_COMPATIBLE_MODEL,
-            model_type="qwen-max",
-            api_key=os.getenv("QWEN_API_KEY"),
-            url="https://dashscope.aliyuncs.com/compatible-mode/v1",
-            model_config_dict={"temperature": 0.4, "max_tokens": 4096},
-        ),
-        "web": ModelFactory.create(
-            model_platform=ModelPlatformType.OPENAI_COMPATIBLE_MODEL,
-            model_type="qwen-vl-max",
-            api_key=os.getenv("QWEN_API_KEY"),
-            url="https://dashscope.aliyuncs.com/compatible-mode/v1",
-            model_config_dict={"temperature": 0.4, "max_tokens": 4096},
-        ),
-        "planning": ModelFactory.create(
-            model_platform=ModelPlatformType.OPENAI_COMPATIBLE_MODEL,
-            model_type="qwen-max",
-            api_key=os.getenv("QWEN_API_KEY"),
-            url="https://dashscope.aliyuncs.com/compatible-mode/v1",
-            model_config_dict={"temperature": 0.4, "max_tokens": 4096},
-        ),
-        "image": ModelFactory.create(
-            model_platform=ModelPlatformType.OPENAI_COMPATIBLE_MODEL,
-            model_type="qwen-vl-max",
-            api_key=os.getenv("QWEN_API_KEY"),
-            url="https://dashscope.aliyuncs.com/compatible-mode/v1",
-            model_config_dict={"temperature": 0.4, "max_tokens": 4096},
-        ),
+        "user": ModelFactory.create(**base_model_config),
+        "assistant": ModelFactory.create(**base_model_config),
+        "web": ModelFactory.create(**base_model_config),
+        "planning": ModelFactory.create(**base_model_config),
+        "image": ModelFactory.create(**base_model_config),
     }
 
     # Configure toolkits
@@ -124,7 +105,7 @@ def construct_society(question: str) -> OwlRolePlaying:
 def main():
     r"""Main function to run the OWL system with an example question."""
     # Example research question
-    question = "Navigate to Amazon.com and identify one product that is attractive to coders. Please provide me with the product name and price. No need to verify your answer."
+    question = "Go to amazon.com and search for the cheapest laptop with a rtx 3050 graphics card and ryzen 5. Provide the product name, its price, and a brief description of the design and what the general consensus the reviews are saying about the laptop. I have a budget of 80000 INR"
 
     # Construct and run the society
     society = construct_society(question)
