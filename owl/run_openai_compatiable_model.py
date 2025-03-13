@@ -48,7 +48,7 @@ def construct_society(question: str) -> OwlRolePlaying:
     base_model_config = {
         "model_platform": ModelPlatformType.OPENAI_COMPATIBLE_MODEL,
         "model_type": "llama-3.3-70b-versatile",  # Using Mixtral model from Groq
-        "api_key": "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",
+        "api_key": "API_KEY",
         "url": "https://api.groq.com/openai/v1",
         "model_config_dict": {
             "temperature": 0.4,
